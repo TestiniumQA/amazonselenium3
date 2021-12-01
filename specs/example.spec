@@ -14,3 +14,4 @@ tags:deleteProduct
 * Search product and add to basket
 * go basket
 * delete product and check
+* check login page
