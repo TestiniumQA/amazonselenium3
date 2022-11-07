@@ -10,11 +10,6 @@
     "type": "id"
   },
   {
-    "key": "spccaccept",
-    "value": "twotabsearchtextbox",
-    "type": "id"
-  },
-  {
     "key": "addtocartbutton",
     "value": "add-to-cart-button",
     "type": "id"
@@ -51,7 +46,7 @@
   },
   {
     "key": "checkstock",
-    "value": "//span[contains(text(),\"Stokta var.\")]",
+    "value": "//*[@id='peDealOfTheDayAvailability_feature_div']/div/span[contains(text(),'Stokta var.')]",
     "type": "xpath"
   }
   ,
