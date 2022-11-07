@@ -46,7 +46,7 @@
   },
   {
     "key": "checkstock",
-    "value": "//*[@id='peDealOfTheDayAvailability_feature_div']/div/span[contains(text(),'Stokta')]",
+    "value": "//*[@id='availability']/span[contains(text(),'Stokta')]",
     "type": "xpath"
   }
   ,
