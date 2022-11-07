@@ -11,7 +11,7 @@
   },
   {
     "key": "addtocartbutton",
-    "value": "add-to-cart-button",
+    "value": "dealsx_atc_btn-announce",
     "type": "id"
   },
   {
@@ -46,7 +46,7 @@
   },
   {
     "key": "checkstock",
-    "value": "//*[@id='peDealOfTheDayAvailability_feature_div']/div/span[contains(text(),'Stokta var.')]",
+    "value": "//*[@id='peDealOfTheDayAvailability_feature_div']/div/span[contains(text(),'Stokta')]",
     "type": "xpath"
   }
   ,
