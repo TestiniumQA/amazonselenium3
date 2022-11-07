@@ -1,6 +1,6 @@
 # Search product and add to basket
 * Click to element "spccaccept"
-* Write value "mouse" to element "twotabsearchtextbox"
+* Write value "mouse" to element "spccaccept"
 * Click to element "navsearchsubmitbutton"
 * Click to element "firstmouse"
 * check "checkstock" element is exist
