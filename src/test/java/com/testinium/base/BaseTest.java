@@ -143,7 +143,7 @@ public class BaseTest {
         chromeOptions.addArguments("--kiosk");
         chromeOptions.addArguments("--disable-notifications");
         chromeOptions.addArguments("--start-fullscreen");
-        System.setProperty("webdriver.chrome.driver", "web_driver/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "web_driver/chromedriver.exe");
         chromeOptions.merge(capabilities);
         return chromeOptions;
     }
