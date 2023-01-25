@@ -15,3 +15,4 @@ tags:deleteProduct
 * go basket
 * delete product and check
 * check login page
+* Wait "5" seconds
