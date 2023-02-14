@@ -1,7 +1,7 @@
 # Testinium Web
 
 ## Add Product to Basket
-tags:addProductToBasket
+tags:addProductToBasket, deneme
 * Go to "https://www.amazon.com.tr/" address
 * Search product and add to basket
 * go basket
