@@ -15,3 +15,7 @@ tags:CONG-10818
 * go basket
 * delete product and check
 * check login page
+
+## Go to
+tags:Go to
+* Go to "https://www.amazon.com.tr/" address
