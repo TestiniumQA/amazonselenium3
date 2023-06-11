@@ -19,3 +19,4 @@ tags:CONG-10818
 ## Go to
 tags:Go to
 * Go to "https://www.amazon.com.tr/" address
+* Go to "https://www.amazon.com.tr/" address
