@@ -9,7 +9,7 @@ tags:addProductToBasketttt_deneme4
 * check login page
 
 ## Delete product
-tags:CONG-10818
+tags:delete product and check
 * Go to "https://www.amazon.com.tr/" address
 * Search product and add to basket
 * go basket
