@@ -6,7 +6,9 @@ import com.google.gson.reflect.TypeToken;
 import com.testinium.model.ElementInfo;
 import com.thoughtworks.gauge.AfterScenario;
 import com.thoughtworks.gauge.BeforeScenario;
-import org.apache.commons.lang.StringUtils;
+//import org.apache.commons.lang.StringUtils;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -56,17 +58,21 @@ public class BaseTest {
                 logger.info("Local cihazda " + selectPlatform + " ortamında " + browserName + " browserında test ayağa kalkacak");
                 if ("win".equalsIgnoreCase(selectPlatform)) {
                     if ("chrome".equalsIgnoreCase(browserName)) {
+                        WebDriverManager.chromedriver().setup();
                         driver = new ChromeDriver(chromeOptions());
                         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                     } else if ("firefox".equalsIgnoreCase(browserName)) {
+                        WebDriverManager.firefoxdriver().setup();
                         driver = new FirefoxDriver(firefoxOptions());
                         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                     }
                 } else if ("mac".equalsIgnoreCase(selectPlatform)) {
                     if ("chrome".equalsIgnoreCase(browserName)) {
+                        WebDriverManager.chromedriver().setup();
                         driver = new ChromeDriver(chromeOptions());
                         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                     } else if ("firefox".equalsIgnoreCase(browserName)) {
+                        WebDriverManager.firefoxdriver().setup();
                         driver = new FirefoxDriver(firefoxOptions());
                         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                     }
@@ -76,7 +82,8 @@ public class BaseTest {
             } else {
                 logger.info("************************************   Testiniumda test ayağa kalkacak   ************************************");
                 ChromeOptions options = new ChromeOptions();
-                capabilities = DesiredCapabilities.chrome();
+                //capabilities = DesiredCapabilities.chrome();
+                WebDriverManager.chromedriver().setup();
                 options.setExperimentalOption("w3c", false);
                 options.addArguments("disable-translate");
                 options.addArguments("--disable-notifications");
@@ -86,13 +93,14 @@ public class BaseTest {
                 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
                 capabilities.setCapability("key", System.getenv("key"));
                 browserName = System.getenv("browser");
-                driver = new RemoteWebDriver(new URL("http://hub.testinium.io/wd/hub"), capabilities);
+                driver = new RemoteWebDriver(new URL("https://hubclouddev.testinium.com/wd/hub"), capabilities);
                 actions = new Actions(driver);
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
     }
+
 
     @AfterScenario
     public void tearDown() {
@@ -135,17 +143,17 @@ public class BaseTest {
      * @return the chrome options
      */
     public ChromeOptions chromeOptions() {
-        chromeOptions = new ChromeOptions();
-        capabilities = DesiredCapabilities.chrome();
-        Map<String, Object> prefs = new HashMap<String, Object>();
-        prefs.put("profile.default_content_setting_values.notifications", 2);
-        chromeOptions.setExperimentalOption("prefs", prefs);
-        chromeOptions.addArguments("--kiosk");
-        chromeOptions.addArguments("--disable-notifications");
-        chromeOptions.addArguments("--start-fullscreen");
-        System.setProperty("webdriver.chrome.driver", "web_driver/chromedriver.exe");
-        chromeOptions.merge(capabilities);
-        return chromeOptions;
+        // Chrome sürücü seçeneklerini yapılandırma (isteğe bağlı)
+        ChromeOptions options = new ChromeOptions();options.setExperimentalOption("debuggerAddress", "localhost:50286");
+        // İhtiyaca göre seçenekleri ekleyin
+        return options;
+    }
+
+    private FirefoxOptions firefoxOptions() {
+        // Firefox sürücü seçeneklerini yapılandırma (isteğe bağlı)
+        FirefoxOptions options = new FirefoxOptions();
+        // İhtiyaca göre seçenekleri ekleyin
+        return options;
     }
 
     /**
@@ -153,21 +161,7 @@ public class BaseTest {
      *
      * @return the firefox options
      */
-    public FirefoxOptions firefoxOptions() {
-        firefoxOptions = new FirefoxOptions();
-        capabilities = DesiredCapabilities.firefox();
-        Map<String, Object> prefs = new HashMap<>();
-        prefs.put("profile.default_content_setting_values.notifications", 2);
-        firefoxOptions.addArguments("--kiosk");
-        firefoxOptions.addArguments("--disable-notifications");
-        firefoxOptions.addArguments("--start-fullscreen");
-        FirefoxProfile profile = new FirefoxProfile();
-        capabilities.setCapability(FirefoxDriver.PROFILE, profile);
-        capabilities.setCapability("marionette", true);
-        firefoxOptions.merge(capabilities);
-        System.setProperty("webdriver.gecko.driver", "web_driver/geckodriver");
-        return firefoxOptions;
-    }
+
 
     public ElementInfo findElementInfoByKey(String key) {
         return (ElementInfo) elementMapList.get(key);
