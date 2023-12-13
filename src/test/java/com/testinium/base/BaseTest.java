@@ -144,7 +144,8 @@ public class BaseTest {
      */
     public ChromeOptions chromeOptions() {
         // Chrome sürücü seçeneklerini yapılandırma (isteğe bağlı)
-        ChromeOptions options = new ChromeOptions();options.setExperimentalOption("debuggerAddress", "localhost:50286");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
         // İhtiyaca göre seçenekleri ekleyin
         return options;
     }
