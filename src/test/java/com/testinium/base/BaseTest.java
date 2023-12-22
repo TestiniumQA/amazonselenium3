@@ -81,6 +81,7 @@ public class BaseTest {
 
             } else {
                 logger.info("************************************   Testiniumda test ayağa kalkacak   ************************************");
+                WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 //capabilities = DesiredCapabilities.chrome();
 
@@ -89,9 +90,13 @@ public class BaseTest {
                 options.addArguments("disable-translate");
                 options.addArguments("--disable-notifications");
                 options.addArguments("--start-fullscreen");
+
                 Map<String, Object> prefs = new HashMap<>();
                 options.setExperimentalOption("prefs", prefs);
-              //  capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+
+                //  capabilities.setCapability(ChromeOptions.CAPABILITY, options);
                // capabilities.setCapability("key", System.getenv("key"));
                 String keyValue = System.getenv("key");
                 if (keyValue == null) {
