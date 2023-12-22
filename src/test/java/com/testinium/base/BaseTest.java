@@ -83,6 +83,7 @@ public class BaseTest {
                 logger.info("************************************   Testiniumda test ayağa kalkacak   ************************************");
                 ChromeOptions options = new ChromeOptions();
                 //capabilities = DesiredCapabilities.chrome();
+
                 WebDriverManager.chromedriver().setup();
                 options.setExperimentalOption("w3c", false);
                 options.addArguments("disable-translate");
@@ -91,7 +92,15 @@ public class BaseTest {
                 Map<String, Object> prefs = new HashMap<>();
                 options.setExperimentalOption("prefs", prefs);
               //  capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-                capabilities.setCapability("key", System.getenv("key"));
+               // capabilities.setCapability("key", System.getenv("key"));
+                String keyValue = System.getenv("key");
+                if (keyValue != null) {
+                    capabilities.setCapability("key", keyValue);
+                } else {
+                    System.err.println("Environment variable 'key' is not set.");
+                    // Gerekirse alternatif bir değer atayabilir veya programı sonlandırabilirsiniz.
+                }
+
                 browserName = System.getenv("browser");
                 driver = new RemoteWebDriver(new URL("http://172.25.0.163:4444/wd/hub"), capabilities);
                 actions = new Actions(driver);
