@@ -94,14 +94,11 @@ public class BaseTest {
               //  capabilities.setCapability(ChromeOptions.CAPABILITY, options);
                // capabilities.setCapability("key", System.getenv("key"));
                 String keyValue = System.getenv("key");
-                System.out.println("keyValue = " + keyValue);
-                if (keyValue != null) {
-                    options.setCapability("key", keyValue);
-                    //capabilities.setCapability("key", keyValue);
-                } else {
-                    System.err.println("Environment variable 'key' is not set.");
-                    // Gerekirse alternatif bir değer atayabilir veya programı sonlandırabilirsiniz.
+                if (keyValue == null) {
+                    keyValue = "varsayilan_deger";
+                    System.err.println("Environment variable 'key' is not set. Using default value: " + keyValue);
                 }
+                options.setCapability("key", keyValue);
 
                 browserName = System.getenv("browser");
                 driver = new RemoteWebDriver(new URL("http://172.25.0.163:4444/wd/hub"), capabilities);
