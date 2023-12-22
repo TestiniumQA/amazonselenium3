@@ -96,7 +96,8 @@ public class BaseTest {
                 String keyValue = System.getenv("key");
                 System.out.println("keyValue = " + keyValue);
                 if (keyValue != null) {
-                    capabilities.setCapability("key", keyValue);
+                    options.setCapability("key", keyValue);
+                    //capabilities.setCapability("key", keyValue);
                 } else {
                     System.err.println("Environment variable 'key' is not set.");
                     // Gerekirse alternatif bir değer atayabilir veya programı sonlandırabilirsiniz.
