@@ -86,7 +86,7 @@ public class BaseTest {
                 //capabilities = DesiredCapabilities.chrome();
 
                 WebDriverManager.chromedriver().setup();
-                options.setExperimentalOption("w3c", false);
+                //options.setExperimentalOption("w3c", false);
                 options.addArguments("disable-translate");
                 options.addArguments("--disable-notifications");
                 options.addArguments("--start-fullscreen");
@@ -190,3 +190,6 @@ public class BaseTest {
     }
 
 }
+
+
+
