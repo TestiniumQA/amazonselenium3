@@ -94,6 +94,7 @@ public class BaseTest {
               //  capabilities.setCapability(ChromeOptions.CAPABILITY, options);
                // capabilities.setCapability("key", System.getenv("key"));
                 String keyValue = System.getenv("key");
+                System.out.println("keyValue = " + keyValue);
                 if (keyValue != null) {
                     capabilities.setCapability("key", keyValue);
                 } else {
