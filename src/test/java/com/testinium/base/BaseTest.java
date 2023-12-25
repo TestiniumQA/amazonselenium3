@@ -98,7 +98,7 @@ public class BaseTest {
 
                 //  capabilities.setCapability(ChromeOptions.CAPABILITY, options);
                // capabilities.setCapability("key", System.getenv("key"));
-                String keyValue = System.getenv("key");
+                String keyValue = System.getProperty("key");
                 if (keyValue == null) {
                     keyValue = "varsayilan_deger";
                     System.err.println("Environment variable 'key' is not set. Using default value: " + keyValue);
