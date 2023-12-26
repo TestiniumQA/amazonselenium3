@@ -94,16 +94,17 @@ public class BaseTest {
                 Map<String, Object> prefs = new HashMap<>();
                 options.setExperimentalOption("prefs", prefs);
                 DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
                 //  capabilities.setCapability(ChromeOptions.CAPABILITY, options);
                // capabilities.setCapability("key", System.getenv("key"));
-                String keyValue = System.getProperty("key");
+                String keyValue = System.getenv("key");
                 if (keyValue == null) {
                     keyValue = "varsayilan_deger";
                     System.err.println("Environment variable 'key' is not set. Using default value: " + keyValue);
                 }
                 options.setCapability("key", keyValue);
+                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+
 
                 browserName = System.getenv("browser");
                 driver = new RemoteWebDriver(new URL("http://172.25.0.163:4444/wd/hub"), capabilities);
