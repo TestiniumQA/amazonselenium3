@@ -12,7 +12,7 @@
 * "projectName_createProject_DailyRun" select element by text <projectName>
 * "scenarioName_createProject_DailyRun" elementinin görünür olması kontrol edilir
 * "scenarioName_createProject_DailyRun" elementine <scerioName> değerini yaz
-* <scerioName> degerini "scenarioNameKeyValue" keyinde tut
+//* <scerioName> degerini "scenarioNameKeyValue" keyinde tut
 * "sourceFile_createProject_DailyRun" elementinin değerini <sourceFile> değeriyle değiştirerek "sourceFileKeyValue" elementini oluştur
 * "sourceFileKeyValue" elementinin görünür olması kontrol edilir
 * "sourceFileKeyValue" elementine tıkla

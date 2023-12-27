@@ -10,6 +10,7 @@ Login sayfası concept dosyası
 * "password_LoginPage" elementine "Q6XpZ?6GsMbA" değerini yaz
 * "signInButton_LoginPage" elementinin görünür olması kontrol edilir
 * "signInButton_LoginPage" elementine tıkla
+* "1" saniye bekle
 * Şu anki url "https://testinium.io/home" içeriyor mu
 * "userInf_LoginPage" elementinin görünür olması kontrol edilir
 * "userInf_LoginPage" elementinin text değeri "Testinium QA" değerine eşit mi

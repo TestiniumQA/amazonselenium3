@@ -854,11 +854,12 @@ public class BaseSteps extends BaseTest {
         logger.info(key + " elementi tıklanabilir durumda.");
     }
     @Step("Şu anki url <url> içeriyor mu")
-    public void checkCurrentUrlContains(String url) {
+    public void doesUrlContain(String url) {
         String currentUrl = driver.getCurrentUrl();
         assertTrue(currentUrl.contains(url));
         logger.info("Şu anki url " + url + " içeriyor.");
     }
+
     @Step({"<key> elementinin text değeri <expectedText> değerine eşit mi",
             "get text <key> element and control <expectedText>"})
     public void checkElementTextEquals(String key, String expectedText) {
@@ -902,6 +903,74 @@ public class BaseSteps extends BaseTest {
         jse.executeScript("window.scrollBy(0,250)", "");
         logger.info("Sayfa aşağı kaydırıldı.");
     }
+    @Step("<key> element listesinin text'inde <text> kelimesi var mı kontrol et")
+    public void checkElementListContainsText(String key, String text) {
+        List<WebElement> elements = findElements(key);
+        for (WebElement element : elements) {
+            assertTrue(element.getText().contains(text));
+        }
+        logger.info(key + " element listesinin text'inde " + text + " kelimesi var.");
+    }
+    @Step("<key> elementine <keyValue> keyini yolla")
+    public void sendKeyToElement(String key, String keyValue) {
+        findElement(key).sendKeys(Keys.valueOf(keyValue));
+        logger.info(key + " elementine " + keyValue + " keyi yollandı.");
+    }
+    @Step({"<key> elementinin element sayısını <mapKey> değerinde tut"})
+    public void saveElementCount(String key, String mapKey) {
+        int elementCount = findElements(key).size();
+        saveValue(mapKey, String.valueOf(elementCount));
+        logger.info(key + " elementinin element sayısı " + mapKey + " değerinde tutuldu.");
+    }
+    @Step("<expectedValue> expectedValue ile <actualValue> actualValue eşit mi")
+    public void checkEquals(String expectedValue, String actualValue) {
+        assertEquals(expectedValue, actualValue);
+        logger.info(expectedValue + " expectedValue ile " + actualValue + " actualValue eşit.");
+    }
+    @Step("<key> elementinin değerini <value> değeriyle değiştirerek <newKey> elementini oluştur")
+    public void changeElementValue(String key, String value, String newKey) {
+        String elementValue = findElement(key).getAttribute("value");
+        String newElementValue = elementValue.replace(value, "");
+        saveValue(newKey, newElementValue);
+        logger.info(key + " elementinin değeri " + value + " değeriyle değiştirilerek " + newKey + " elementi oluşturuldu.");
+    }
+    @Step("Şu anki url <url> ile sonlanıyor mu")
+    public void checkCurrentUrlEndsWith(String url) {
+        String currentUrl = driver.getCurrentUrl();
+        assertTrue(currentUrl.endsWith(url));
+        logger.info("Şu anki url " + url + " ile sonlanıyor.");
+    }
+    @Step("<key> dropdown elementinin <index> indexine tıkla")
+    public void clickDropdownElementByIndex(String key, int index) {
+        Select select = new Select(findElement(key));
+        select.selectByIndex(index);
+        logger.info(key + " dropdown elementinin " + index + " indexine tıklandı.");
+    }
+    @Step("<key> elementine random  değerini yaz")
+    public void sendKeysRandom(String key) {
+        if (!key.equals("")) {
+            clearInputArea(key);
+            findElement(key).sendKeys(randomString(10));
+            logger.info(key + " elementine random değer yazıldı.");
+        }
+    }
+    @Step("<key> elementine random tıkla")
+    public void clickRandom(String key) {
+        List<WebElement> elements = findElements(key);
+        Random random = new Random();
+        int index = random.nextInt(elements.size());
+        elements.get(index).click();
+        logger.info(key + " elementine random tıklandı.");
+    }
+    @Step({"<key> focus element","<key> elementine odaklan"})
+    public void focusElement(String key) {
+        WebElement element = findElement(key);
+        actions.moveToElement(element);
+        actions.click();
+        actions.build().perform();
+        logger.info(key + " elementine odaklanıldı.");
+    }
+
 
 
 }
