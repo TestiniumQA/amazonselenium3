@@ -16,8 +16,7 @@ import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BaseSteps extends BaseTest {
 
@@ -170,7 +169,7 @@ public class BaseSteps extends BaseTest {
 
 
     @Step({"Click to element <key>",
-            "Elementine tıkla <key>"})
+            "<key> elementine tıkla"})
     public void clickElement(String key) {
         if (!key.isEmpty()) {
             hoverElement(findElement(key));
@@ -833,6 +832,77 @@ public class BaseSteps extends BaseTest {
         int index = random.nextInt(elements.size());
         elements.get(index).click();
     }
+
+    @Step("<key> elementinin görünür olması kontrol edilir")
+    public void checkElementIsVisible(String key) {
+        WebElement element = findElement(key);
+        assertTrue(element.isDisplayed());
+        logger.info(key + " elementi görünür durumda.");
+    }
+    @Step("<key> elementine <text> değerini yaz")
+    public void sendKeys(String key, String text) {
+        if (!key.equals("")) {
+            clearInputArea(key);
+            findElement(key).sendKeys(text);
+            logger.info(key + " elementine " + text + " texti yazıldı.");
+        }
+    }
+    @Step("<key> elementinin tıklanabilir olması kontrol edilir")
+    public void checkElementIsClickable(String key) {
+        WebElement element = findElement(key);
+        assertTrue(element.isEnabled());
+        logger.info(key + " elementi tıklanabilir durumda.");
+    }
+    @Step("Şu anki url <url> içeriyor mu")
+    public void checkCurrentUrlContains(String url) {
+        String currentUrl = driver.getCurrentUrl();
+        assertTrue(currentUrl.contains(url));
+        logger.info("Şu anki url " + url + " içeriyor.");
+    }
+    @Step({"<key> elementinin text değeri <expectedText> değerine eşit mi",
+            "get text <key> element and control <expectedText>"})
+    public void checkElementTextEquals(String key, String expectedText) {
+        String actualText = findElement(key).getText();
+        assertEquals(actualText, expectedText);
+        logger.info(key + " elementinin text değeri " + expectedText + " değerine eşit.");
+    }
+    @Step("Şu anki url <url> ile aynı mı")
+    public void checkCurrentUrlEquals(String url) {
+        String currentUrl = driver.getCurrentUrl();
+        assertEquals(currentUrl, url);
+        logger.info("Şu anki url " + url + " ile aynı.");
+    }
+    @Step({"<key> elementinin text değeri <expectedText> değerini içeriyor mu",
+            "get text <key> element and control contains <expectedText>"})
+    public void checkElementTextContains(String key, String expectedText) {
+        String actualText = findElement(key).getText();
+        assertTrue(actualText.contains(expectedText));
+        logger.info(key + " elementinin text değeri " + expectedText + " değerini içeriyor.");
+    }
+    @Step("<key> select element by text <text>")
+    public void selectElementByText(String key, String text) {
+        Select select = new Select(findElement(key));
+        select.selectByVisibleText(text);
+        logger.info(key + " elementi " + text + " değeri ile seçildi.");
+    }
+    @Step("<key> elementinin değerini temizle")
+    public void clearElement(String key) {
+        findElement(key).clear();
+        logger.info(key + " elementinin değeri temizlendi.");
+    }
+    @Step("<key> elementinin görünür olmadığı kontrol edilir")
+    public void checkElementIsNotVisible(String key) {
+        WebElement element = findElement(key);
+        assertFalse(element.isDisplayed());
+        logger.info(key + " elementi görünür değil.");
+    }
+    @Step("sayfayı aşağı kaydır")
+    public void scrollDown() {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollBy(0,250)", "");
+        logger.info("Sayfa aşağı kaydırıldı.");
+    }
+
 
 }
 

@@ -7,8 +7,8 @@ import com.testinium.model.ElementInfo;
 import com.thoughtworks.gauge.AfterScenario;
 import com.thoughtworks.gauge.BeforeScenario;
 //import org.apache.commons.lang.StringUtils;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.lang3.StringUtils;
+
+import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -58,21 +58,19 @@ public class BaseTest {
                 logger.info("Local cihazda " + selectPlatform + " ortamında " + browserName + " browserında test ayağa kalkacak");
                 if ("win".equalsIgnoreCase(selectPlatform)) {
                     if ("chrome".equalsIgnoreCase(browserName)) {
-                        WebDriverManager.chromedriver().setup();
                         driver = new ChromeDriver(chromeOptions());
+                        driver.manage().window().maximize();
                         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                     } else if ("firefox".equalsIgnoreCase(browserName)) {
-                        WebDriverManager.firefoxdriver().setup();
                         driver = new FirefoxDriver(firefoxOptions());
                         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                     }
                 } else if ("mac".equalsIgnoreCase(selectPlatform)) {
                     if ("chrome".equalsIgnoreCase(browserName)) {
-                        WebDriverManager.chromedriver().setup();
                         driver = new ChromeDriver(chromeOptions());
+                        driver.manage().window().maximize();
                         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                     } else if ("firefox".equalsIgnoreCase(browserName)) {
-                        WebDriverManager.firefoxdriver().setup();
                         driver = new FirefoxDriver(firefoxOptions());
                         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                     }
@@ -81,11 +79,9 @@ public class BaseTest {
 
             } else {
                 logger.info("************************************   Testiniumda test ayağa kalkacak   ************************************");
-                WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 //capabilities = DesiredCapabilities.chrome();
 
-                WebDriverManager.chromedriver().setup();
                 //options.setExperimentalOption("w3c", false);
                 options.addArguments("disable-translate");
                 options.addArguments("--disable-notifications");
