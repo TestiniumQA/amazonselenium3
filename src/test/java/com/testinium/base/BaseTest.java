@@ -103,7 +103,8 @@ public class BaseTest {
 
 
                 browserName = System.getenv("browser");
-                driver = new RemoteWebDriver(new URL("http://172.25.0.163:4444/wd/hub"), capabilities);
+               // driver = new RemoteWebDriver(new URL("http://172.25.0.163:4444/wd/hub"), capabilities);
+                driver = new RemoteWebDriver(new URL("http://hub.testinium.io/wd/hub"), capabilities);
                 actions = new Actions(driver);
             }
         } catch (MalformedURLException e) {
