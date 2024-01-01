@@ -86,6 +86,9 @@ public class BaseTest {
                 options.addArguments("disable-translate");
                 options.addArguments("--disable-notifications");
                 options.addArguments("--start-fullscreen");
+                options.addArguments("--disable-web-security");
+                options.addArguments("--allow-running-insecure-content");
+                options.addArguments("--allow-cross-origin-auth-prompt");
 
                 Map<String, Object> prefs = new HashMap<>();
                 options.setExperimentalOption("prefs", prefs);
@@ -103,8 +106,8 @@ public class BaseTest {
 
 
                 browserName = System.getenv("browser");
-               // driver = new RemoteWebDriver(new URL("http://172.25.0.163:4444/wd/hub"), capabilities);
-                driver = new RemoteWebDriver(new URL("http://hub.testinium.io/wd/hub"), capabilities);
+                driver = new RemoteWebDriver(new URL("http://172.25.0.163:4444/wd/hub"), capabilities);
+                //driver = new RemoteWebDriver(new URL("http://hub.testinium.io/wd/hub"), capabilities);
                 actions = new Actions(driver);
             }
         } catch (MalformedURLException e) {
