@@ -156,12 +156,14 @@ public class BaseTest {
      *
      * @return the chrome options
      */
+
     public ChromeOptions chromeOptions() {
         // Chrome sürücü seçeneklerini yapılandırma (isteğe bağlı)
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         // İhtiyaca göre seçenekleri ekleyin
         return options;
+
     }
 
     private FirefoxOptions firefoxOptions() {
