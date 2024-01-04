@@ -101,7 +101,7 @@ public class BaseTest {
                     keyValue = "varsayilan_deger";
                     System.err.println("Environment variable 'key' is not set. Using default value: " + keyValue);
                 }
-                options.setCapability("key", keyValue);
+                options.setCapability("testinium:key", keyValue);
                 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
 
