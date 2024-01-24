@@ -1,6 +1,6 @@
 [
   {
-    "key": "headerText_ReportsPage_TestExecutionsAuto",
+    "key": "ReportsPageText",
     "value": "//a[contains(@class,'logo')]//following-sibling::ul//a[@href='/report' and text()='Reports']",
     "type": "xpath"
   },

@@ -11,8 +11,8 @@
   },
   {
     "key": "saveButton_ProfilePage",
-    "value": "//button[@class='btn btn-primary btn-lg ladda-button']/span[text()='SAVE']",
-    "type": "xpath"
+    "value": "button[class='btn btn-primary btn-lg ladda-button']",
+    "type": "css"
   },
   {
     "key": "successMessage_ProfilePage",
@@ -21,8 +21,8 @@
   },
   {
     "key": "cancelButton_ProfilePage",
-    "value": "//button[@class='btn btn-outline btn-lg margin-right-20'][text()='CANCEL']",
-    "type": "xpath"
+    "value": "button[class='btn btn-outline btn-lg margin-right-20']",
+    "type": "css"
   },
   {
     "key": "ProfileTitle_ProfilePage",
@@ -74,11 +74,17 @@
     "key": "tunnel_Information",
     "value": "//a[@href='/user/account/tunnel' and text()='TUNNEL']",
     "type": "xpath"
-
-
-
-
-
-
+  },
+  {
+    "key": "ProfileText",
+    "value": "//a[contains(text(),'Profile')]",
+    "type": "xpath"
+  },
+  {
+    "key": "BasicInformationText",
+    "value": "//a[contains(text(),'Basic Information')]",
+    "type": "xpath"
   }
+
+
 ]

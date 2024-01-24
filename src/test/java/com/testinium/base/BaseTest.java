@@ -6,8 +6,6 @@ import com.google.gson.reflect.TypeToken;
 import com.testinium.model.ElementInfo;
 import com.thoughtworks.gauge.AfterScenario;
 import com.thoughtworks.gauge.BeforeScenario;
-//import org.apache.commons.lang.StringUtils;
-
 import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -59,7 +57,6 @@ public class BaseTest {
                 if ("win".equalsIgnoreCase(selectPlatform)) {
                     if ("chrome".equalsIgnoreCase(browserName)) {
                         driver = new ChromeDriver(chromeOptions());
-                        driver.manage().window().maximize();
                         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                     } else if ("firefox".equalsIgnoreCase(browserName)) {
                         driver = new FirefoxDriver(firefoxOptions());
@@ -68,7 +65,6 @@ public class BaseTest {
                 } else if ("mac".equalsIgnoreCase(selectPlatform)) {
                     if ("chrome".equalsIgnoreCase(browserName)) {
                         driver = new ChromeDriver(chromeOptions());
-                        driver.manage().window().maximize();
                         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                     } else if ("firefox".equalsIgnoreCase(browserName)) {
                         driver = new FirefoxDriver(firefoxOptions());
@@ -80,41 +76,23 @@ public class BaseTest {
             } else {
                 logger.info("************************************   Testiniumda test ayağa kalkacak   ************************************");
                 ChromeOptions options = new ChromeOptions();
-                //capabilities = DesiredCapabilities.chrome();
-
-                //options.setExperimentalOption("w3c", false);
+                capabilities = DesiredCapabilities.chrome();
+                options.setExperimentalOption("w3c", false);
                 options.addArguments("disable-translate");
                 options.addArguments("--disable-notifications");
                 options.addArguments("--start-fullscreen");
-                options.addArguments("--disable-web-security");
-                options.addArguments("--allow-running-insecure-content");
-                options.addArguments("--allow-cross-origin-auth-prompt");
-
                 Map<String, Object> prefs = new HashMap<>();
                 options.setExperimentalOption("prefs", prefs);
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-
-                //  capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-               // capabilities.setCapability("key", System.getenv("key"));
-                String keyValue = System.getenv("key");
-                if (keyValue == null) {
-                    keyValue = "varsayilan_deger";
-                    System.err.println("Environment variable 'key' is not set. Using default value: " + keyValue);
-                }
-                options.setCapability("testinium:key", keyValue);
                 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-
-
+                capabilities.setCapability("key", System.getenv("key"));
                 browserName = System.getenv("browser");
-                driver = new RemoteWebDriver(new URL("http://172.25.0.163:4444/wd/hub"), capabilities);
-                //driver = new RemoteWebDriver(new URL("http://hub.testinium.io/wd/hub"), capabilities);
+                driver = new RemoteWebDriver(new URL("https://hub.testinium.io/wd/hub"), capabilities);
                 actions = new Actions(driver);
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
     }
-
 
     @AfterScenario
     public void tearDown() {
@@ -156,21 +134,18 @@ public class BaseTest {
      *
      * @return the chrome options
      */
-
     public ChromeOptions chromeOptions() {
-        // Chrome sürücü seçeneklerini yapılandırma (isteğe bağlı)
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        // İhtiyaca göre seçenekleri ekleyin
-        return options;
-
-    }
-
-    private FirefoxOptions firefoxOptions() {
-        // Firefox sürücü seçeneklerini yapılandırma (isteğe bağlı)
-        FirefoxOptions options = new FirefoxOptions();
-        // İhtiyaca göre seçenekleri ekleyin
-        return options;
+        chromeOptions = new ChromeOptions();
+        capabilities = DesiredCapabilities.chrome();
+        Map<String, Object> prefs = new HashMap<String, Object>();
+        prefs.put("profile.default_content_setting_values.notifications", 2);
+        chromeOptions.setExperimentalOption("prefs", prefs);
+        chromeOptions.addArguments("--kiosk");
+        chromeOptions.addArguments("--disable-notifications");
+        chromeOptions.addArguments("--start-fullscreen");
+        System.setProperty("webdriver.chrome.driver", "web_driver/chromedriver");
+        chromeOptions.merge(capabilities);
+        return chromeOptions;
     }
 
     /**
@@ -178,7 +153,21 @@ public class BaseTest {
      *
      * @return the firefox options
      */
-
+    public FirefoxOptions firefoxOptions() {
+        firefoxOptions = new FirefoxOptions();
+        capabilities = DesiredCapabilities.firefox();
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("profile.default_content_setting_values.notifications", 2);
+        firefoxOptions.addArguments("--kiosk");
+        firefoxOptions.addArguments("--disable-notifications");
+        firefoxOptions.addArguments("--start-fullscreen");
+        FirefoxProfile profile = new FirefoxProfile();
+        capabilities.setCapability(FirefoxDriver.PROFILE, profile);
+        capabilities.setCapability("marionette", true);
+        firefoxOptions.merge(capabilities);
+        System.setProperty("webdriver.gecko.driver", "web_driver/geckodriver");
+        return firefoxOptions;
+    }
 
     public ElementInfo findElementInfoByKey(String key) {
         return (ElementInfo) elementMapList.get(key);
@@ -191,8 +180,4 @@ public class BaseTest {
     public String getValue(String key) {
         return elementMapList.get(key).toString();
     }
-
 }
-
-
-

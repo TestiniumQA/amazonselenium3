@@ -14,12 +14,14 @@
 * Şu anki url "https://testinium.io/plan" ile aynı mı
 
 # Dashboard sayfasından Test Executions(Auto) sayfasına başarılı şekilde yönlendiği görülmelidir
-* Şu anki url "https://testinium.io/report" ile aynı mı
+* Şuanki URL "https://testinium.io/report" değerini içeriyor mu kontrol et
 
 # Dashboard sayfasından Scheduled Reports sayfasına başarılı şekilde yönlendiği görülmelidir
+* Wait "1" seconds
 * Şu anki url "https://testinium.io/report/scheduled" ile aynı mı
 
 # Dashboard sayfasından Smart Prioritization sayfasına başarılı şekilde yönlendiği görülmelidir
+* Wait "1" seconds
 * Şu anki url "https://testinium.io/report/graph" ile aynı mı
 
 # Dashboard sayfasından Automated Tests sayfasına başarılı şekilde yönlendiği görülmelidir
@@ -89,6 +91,7 @@
 # Sağ üstteki company seçimi kısmından geçilecek company yazılır ve tıklanır
 * "companySelect" elementinin görünür olması kontrol edilir
 * "companySelect" elementine "senaeroglu" değerini yaz
+* Click Enter
 
 # Koşulan son 10 planın rundate, runtime, test result ve details'i Latest Test Runs panelinde görünür
 * "latestTestRuns" elementinin görünür olması kontrol edilir

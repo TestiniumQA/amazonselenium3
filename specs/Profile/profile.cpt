@@ -2,9 +2,11 @@
 
 # Profile tabına tıkla ve profile sayfasında olduğunu kontrol et
 * User Information tabına tıkla
+* "ProfileTitle_ProfilePage" elementinin görünür olması kontrol edilir
 * Profile tabına tıkla
-* Şu anki url "https://clouddev.testinium.io/user/profile" ile aynı mı
-/* "ProfileTitle_ProfilePage" elementinin görünür olması kontrol edilir
+* Wait for element to load with css "#email"
+* Şu anki url "https://testinium.io/user/profile" ile aynı mı
+* "ProfileText" elementinin görünür olması kontrol edilir
 
 # User Information tabına tıkla
 * "dropdown_ProfilePage" elementinin görünür olması kontrol edilir
@@ -36,13 +38,15 @@
 # Account Information tabına tıkla
 * "accountInformation_ProfilePage" elementinin görünür olması kontrol edilir
 * "accountInformation_ProfilePage" elementine tıkla
+* Wait "2" seconds
+//* Wait for element to load with css "BasicInformationText"
 
 # Basic Information sayfasının element kontrolün yapılması
 * User Information tabına tıkla
 * Account Information tabına tıkla
 * "editbutton_Information" elementinin görünür olması kontrol edilir
 * "editbutton_Information" elementine tıkla
-* Şu anki url "https://clouddev.testinium.io/user/account/information/edit" ile aynı mı
+* Şu anki url "https://testinium.io/user/account/information/edit" ile aynı mı
 
 # Edit sayfasındaki cancel butonuna tıklanması
 * "cancelbutton_Information" elementinin görünür olması kontrol edilir

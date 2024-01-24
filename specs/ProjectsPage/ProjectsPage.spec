@@ -25,8 +25,8 @@ Projects sayfası-arama kutusu-var olan projeleri arama
 Tags: ProjectsSayfasiAramaKutusuVarOlanProjeleriArama
 
 * Projects tabına tıklanır
-* Proje arama kutusuna "appium" yazılır
-* "appium" kelimesini içeren projelerin ekrana geldiği görülür
+* Proje arama kutusuna "Appium" yazılır
+* "Appium" kelimesini içeren projelerin ekrana geldiği görülür
 
 Projects sayfası-arama kutusu-olmayan projeleri arama
 -----------------------------------------------------

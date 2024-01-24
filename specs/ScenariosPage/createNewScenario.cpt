@@ -8,6 +8,7 @@
 * "createNewScenarioTab" elementine tıkla
 
 # Proje seçilir
+* Wait for element to be present with xpath "createNewProject_clickButton"
 * "createNewProject_clickButton" elementinin görünür olması kontrol edilir
 * "createNewProject_clickButton" elementine tıkla
 * "projectName_createProject" elementinin görünür olması kontrol edilir

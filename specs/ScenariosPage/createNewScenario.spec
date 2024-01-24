@@ -1,7 +1,7 @@
 Scenarios Sayfası Create New Scenario Test Senaryoları
 =====================
 
-* "qa@testinium.io" ve "Q6XpZ?6GsMbA" bilgileriyle geçerli giriş yapılır ve dashboard sayfasına ulaşılır.
+* "mehmet.aksahin@testinium.com" ve "Aa123456" bilgileriyle geçerli giriş yapılır ve dashboard sayfasına ulaşılır.
 
 Yeni bir senaryo oluşturma kontrolü
 ----------------

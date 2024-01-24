@@ -163,5 +163,42 @@
     "key": "dynamicProjectPanel_ProjectsPage_ProjectList",
     "value": "//div[contains(@class,'project-panel') and .//h5[@class='long-text' and text()='%s']]",
     "type": "xpath"
+  },
+  {
+    "key": "ProjectTexxt",
+    "value": "//a[contains(text(),'Projects')]",
+    "type": "xpath"
+  },
+  {
+    "key": "FirstProjectName",
+    "value": "div[class='container-fluid']>div:nth-of-type(3)>div>div>div>h5",
+    "type": "css"
+  },
+  {
+    "key": "CreateProjectButton",
+    "value": "div[class='panel project-panel rounded-2x create-panel']",
+    "type": "css"
+  },
+  {
+    "key": "",
+    "value": "",
+    "type": ""
+  },
+  {
+    "key": "",
+    "value": "",
+    "type": ""
+  },
+  {
+    "key": "",
+    "value": "",
+    "type": ""
+  },
+  {
+    "key": "",
+    "value": "",
+    "type": ""
   }
+
+
 ]

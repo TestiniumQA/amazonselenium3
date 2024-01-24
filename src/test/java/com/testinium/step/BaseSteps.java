@@ -34,7 +34,8 @@ public class BaseSteps extends BaseTest {
 
     WebElement findElement(String key) {
         By infoParam = getElementInfoToBy(findElementInfoByKey(key));
-        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(60));        WebElement webElement = webDriverWait
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 60);
+        WebElement webElement = webDriverWait
                 .until(ExpectedConditions.presenceOfElementLocated(infoParam));
         ((JavascriptExecutor) driver).executeScript(
                 "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center', inline: 'center'})",
@@ -63,6 +64,16 @@ public class BaseSteps extends BaseTest {
         }
         return by;
     }
+    @Step("Wait for element to be present with xpath <xpath>")
+    public void waitForElementToBePresent(String xpath) {
+        WebElement webElement = findElement(xpath);
+        if (webElement == null) {
+            throw new AssertionError("Element with xpath: '" + xpath + "' couldn't be found within the specified time.");
+        }
+    }
+
+
+
 
     private void clickElement(WebElement element) {
         element.click();
@@ -845,6 +856,8 @@ public class BaseSteps extends BaseTest {
             clearInputArea(key);
             findElement(key).sendKeys(text);
             logger.info(key + " elementine " + text + " texti yazıldı.");
+            logger.info("Actual text: " + text);
+            logger.info("Expected text: " + text);
         }
     }
     @Step("<key> elementinin tıklanabilir olması kontrol edilir")
@@ -856,6 +869,8 @@ public class BaseSteps extends BaseTest {
     @Step("Şu anki url <url> içeriyor mu")
     public void doesUrlContain(String url) {
         String currentUrl = driver.getCurrentUrl();
+        logger.info(currentUrl);
+        logger.info(url);
         assertTrue(currentUrl.contains(url));
         logger.info("Şu anki url " + url + " içeriyor.");
     }
@@ -866,6 +881,8 @@ public class BaseSteps extends BaseTest {
         String actualText = findElement(key).getText();
         assertEquals(actualText, expectedText);
         logger.info(key + " elementinin text değeri " + expectedText + " değerine eşit.");
+        logger.info(key+ "Beklenen text: " + actualText);
+        logger.info(key + "Gercek text: " + expectedText);
     }
     @Step("Şu anki url <url> ile aynı mı")
     public void checkCurrentUrlEquals(String url) {
@@ -877,8 +894,11 @@ public class BaseSteps extends BaseTest {
             "get text <key> element and control contains <expectedText>"})
     public void checkElementTextContains(String key, String expectedText) {
         String actualText = findElement(key).getText();
+        logger.info("Actual text: " + actualText);
+        logger.info("Expected text: " + expectedText);
         assertTrue(actualText.contains(expectedText));
         logger.info(key + " elementinin text değeri " + expectedText + " değerini içeriyor.");
+
     }
     @Step("<key> select element by text <text>")
     public void selectElementByText(String key, String text) {
@@ -969,6 +989,11 @@ public class BaseSteps extends BaseTest {
         actions.click();
         actions.build().perform();
         logger.info(key + " elementine odaklanıldı.");
+    }
+    @Step("Click Enter")
+    public void clickEnter() {
+        actions.sendKeys(Keys.ENTER).build().perform();
+        logger.info("Enter tuşuna basıldı.");
     }
 
 

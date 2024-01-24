@@ -1,6 +1,6 @@
 
 # <email> ve <password> bilgileriyle giriş yap
-* "https://testinium.io/" adresine git
+* "https://clouddev.testinium.io/" adresine git
 * "userName_LoginPage" elementinin görünür olması kontrol edilir
 * "password_LoginPage" elementinin görünür olması kontrol edilir
 * "signIn_LoginPage" elementinin görünür olması kontrol edilir
@@ -12,23 +12,30 @@
 
 # <email> ve <password> bilgileriyle geçerli giriş yapılır ve dashboard sayfasına ulaşılır.
 * <email> ve <password> bilgileriyle giriş yap
-* Şu anki url "https://testinium.io/" içeriyor mu
+* Şu anki url "https://clouddev.testinium.io/" içeriyor mu
+* Wait for element to be present with xpath "dashboardText_Dashboard"
 * "dashboardText_Dashboard" elementinin görünür olması kontrol edilir
 * "dashboardText_Dashboard" elementinin text değeri "Dashboard" değerine eşit mi
 
-# Dashboard sayfasında sidebardan all scenarios tabına tıklanır
+# Dashboard sayfasında sidebardan all scenarios tabına tıklanır ve sayfada olup olmadığı kontrol edilir
 * "scenariosTab_SideBarTabs" elementinin görünür olması kontrol edilir
 * Click to element "scenariosTab_SideBarTabs"
+* Wait for element to be present with xpath "ScenariosPage"
+* Şu anki url "https://clouddev.testinium.io/scenario" ile aynı mı
 
 
-# Dashboard sayfasında sidebardan Project tabına tıklanır
+# Dashboard sayfasında sidebardan Project tabına tıklanır  ve sayfada olup olmadığı kontrol edilir
 * "projectTab_SideBarTabs" elementinin görünür olması kontrol edilir
 * Click to element "projectTab_SideBarTabs"
+* Wait for element to be present with xpath "CreateProjectButton"
+* Şu anki url "https://clouddev.testinium.io/project" ile aynı mı
 
 
-# Dashboard sayfasında sidebardan Plans tabına tıklanır
+# Dashboard sayfasında sidebardan Plans tabına tıklanır ve sayfada olup olmadığı kontrol edilir
 * "plansTab_SideBarTabs" elementinin görünür olması kontrol edilir
 * Click to element "plansTab_SideBarTabs"
+* Wait for element to be present with xpath "CreateNewGroupButton"
+* Şu anki url "https://clouddev.testinium.io/plan" ile aynı mı
 
 
 # Dashboard sayfasında sidebardan Report tabına tıklanır
@@ -36,24 +43,32 @@
 * Click to element "reportsTab_SideBarTabs"
 
 
-# Report tabı altındaki Text Execution (Auto) tabına tıklanır
+# Report tabı altındaki Text Execution (Auto) tabına tıklanır ve sayfada olup olmadığı kontrol edilir
 * "testExecutionsAutoTab_SideBarTabs" elementinin görünür olması kontrol edilir
 * Click to element "testExecutionsAutoTab_SideBarTabs"
+* Wait for element to be present with xpath "ReportsPageText"
+* Şuanki URL "https://clouddev.testinium.io/report" değerini içeriyor mu kontrol et
 
 
-# Report tabı altındaki Scheduled Reports tabına tıklanır
+# Report tabı altındaki Scheduled Reports tabına tıklanır ve sayfada olup olmadığı kontrol edilir
 * "scheduledReportsTab_SideBarTabs" elementinin görünür olması kontrol edilir
 * Click to element "scheduledReportsTab_SideBarTabs"
+* Wait for element to be present with xpath "CreateNewSchedule"
+* Şuanki URL "https://clouddev.testinium.io/report/scheduled" değerini içeriyor mu kontrol et
 
 
-# Report tabı altındaki Smart Prioritization Report tabına tıklanır
+# Report tabı altındaki Smart Prioritization Report tabına tıklanır ve sayfada olup olmadığı kontrol edilir
 * "smartPrioritizationReportTab_SideBarTabs" elementinin görünür olması kontrol edilir
 * Click to element "smartPrioritizationReportTab_SideBarTabs"
+* Wait for element to be present with xpath "SmartPriorisation"
+* Şuanki URL "https://clouddev.testinium.io/report/graph" değerini içeriyor mu kontrol et
 
 
-# Dashboard sayfasında sidebardan Automated Tests tabına tıklanır
+# Dashboard sayfasında sidebardan Automated Tests tabına tıklanır ve sayfada olup olmadığı kontrol edilir
 * "automatedTestsTab_SideBarTabs" elementinin görünür olması kontrol edilir
 * Click to element "automatedTestsTab_SideBarTabs"
+* Wait for element to be present with xpath "testCodeGenerator_Title"
+* Şuanki URL "https://clouddev.testinium.io/automated/code-generator" değerini içeriyor mu kontrol et
 
 
 # Dashboard sayfasında Live Testing tabına tıklanır
