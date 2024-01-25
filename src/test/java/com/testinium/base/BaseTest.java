@@ -86,7 +86,7 @@ public class BaseTest {
                 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
                 capabilities.setCapability("key", System.getenv("key"));
                 browserName = System.getenv("browser");
-                driver = new RemoteWebDriver(new URL("http://hub.testinium.io/wd/hub"), capabilities);
+                driver = new RemoteWebDriver(new URL("http://172.25.1.12:4444/wd/hub"), capabilities);
                 actions = new Actions(driver);
             }
         } catch (MalformedURLException e) {
