@@ -5,7 +5,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.testinium.model.ElementInfo;
 import com.thoughtworks.gauge.AfterScenario;
+import com.thoughtworks.gauge.AfterStep;
 import com.thoughtworks.gauge.BeforeScenario;
+import com.thoughtworks.gauge.Gauge;
 import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -92,6 +94,11 @@ public class BaseTest {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+    }
+    @AfterStep
+    public void afterStep() {
+        Gauge.captureScreenshot();
+        logger.info("************************************  AfterStep  ************************************");
     }
 
     @AfterScenario
