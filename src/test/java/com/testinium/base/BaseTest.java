@@ -5,9 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.testinium.model.ElementInfo;
 import com.thoughtworks.gauge.AfterScenario;
-import com.thoughtworks.gauge.AfterStep;
 import com.thoughtworks.gauge.BeforeScenario;
-import com.thoughtworks.gauge.Gauge;
 import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,6 +18,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,8 +36,13 @@ import java.util.concurrent.TimeUnit;
 
 
 public class BaseTest {
+    //dsfdsf
+    //dsadsadsad
+
 
     protected static WebDriver driver;
+    //dsfsad
+
     protected static Actions actions;
     protected Logger logger = LoggerFactory.getLogger(getClass());
     DesiredCapabilities capabilities;
@@ -45,7 +50,7 @@ public class BaseTest {
     FirefoxOptions firefoxOptions;
 
     String browserName = "chrome";
-    String selectPlatform = "mac";
+    String selectPlatform = "win";
 
     private static final String DEFAULT_DIRECTORY_PATH = "elementValues";
     ConcurrentMap<String, Object> elementMapList = new ConcurrentHashMap<>();
@@ -88,17 +93,12 @@ public class BaseTest {
                 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
                 capabilities.setCapability("key", System.getenv("key"));
                 browserName = System.getenv("browser");
-                driver = new RemoteWebDriver(new URL("http://172.25.1.12:4444/wd/hub"), capabilities);
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
                 actions = new Actions(driver);
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-    }
-    @AfterStep
-    public void afterStep() {
-        Gauge.captureScreenshot();
-        logger.info("************************************  AfterStep  ************************************");
     }
 
     @AfterScenario
@@ -187,4 +187,5 @@ public class BaseTest {
     public String getValue(String key) {
         return elementMapList.get(key).toString();
     }
+
 }
