@@ -182,11 +182,9 @@ public class BaseSteps extends BaseTest {
     @Step({"Click to element <key>",
             "<key> elementine tıkla"})
     public void clickElement(String key) {
-        if (!key.isEmpty()) {
-            hoverElement(findElement(key));
-            clickElement(findElement(key));
-            logger.info(key + " elementine tıklandı.");
-        }
+        findElement(key).click();
+        logger.info(key + " elementine tıklandı.");
+
     }
 
 
