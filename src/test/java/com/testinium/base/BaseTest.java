@@ -50,7 +50,7 @@ public class BaseTest {
     FirefoxOptions firefoxOptions;
 
     String browserName = "chrome";
-    String selectPlatform = "win";
+    String selectPlatform = "mac";
 
     private static final String DEFAULT_DIRECTORY_PATH = "elementValues";
     ConcurrentMap<String, Object> elementMapList = new ConcurrentHashMap<>();
